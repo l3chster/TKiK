@@ -1,4 +1,4 @@
-# Kompilatory_Skaner
+## Description
 
 - Skanujemy wyrażenie matematyczne, np. 2+3*(76+8/3)+ 3*(9-3)
 - Określ zbiór tokenów do skanowania (nazwa/kod i opis) i język implementacji
