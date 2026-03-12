@@ -1,6 +1,6 @@
-## Description
+## Description  (weekend implementacja wstępna)
 
-- Skanujemy wyrażenie matematyczne, np. 2+3*(76+8/3)+ 3*(9-3)
+- Skanujemy wyrażenie matematyczne, np. 2+3*(76+8/3) + 3*(9-3)
 - Określ zbiór tokenów do skanowania (nazwa/kod i opis) i język implementacji
 - Napisz program rozpoznający i wypisujący tokeny - pary: (kod, wartość) 
    - funkcja skaner wywoływana w pętli do napotkania końca wyrażenia
