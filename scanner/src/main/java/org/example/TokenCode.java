@@ -13,4 +13,5 @@ public enum TokenCode{
     DIV,          // /
     LPAREN,       // (
     RPAREN,       // )
+    EOF
 }

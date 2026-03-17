@@ -1,69 +1,58 @@
 package org.example;
-import java.util.*;
-import java.lang.*;
+
+import java.util.ArrayList;
 
 public class Scanner {
 
+    private ArrayList<Token> tokens;
     private String text;
-    private int iterator;
-    private String token_value;
-    private Magazine magazine;
+    private int index = 0;
 
-    public Scanner(String text) {
+    public Scanner(String text){
         this.text = text;
-        this.iterator = 0;
-        this.token_value = "";
-        this.magazine = new Magazine();
+        tokens = new ArrayList<>();
     }
 
-    public void execute()  {
+    public void scanTokens() throws Exception {
 
-        while(this.iterator < this.text.length() )   // zmienić warunek żeby aż znajdzie eof??? zeby nie wykorzystywac dlugosci slowa
-        {                                              // EDIT:: w javie nie ma EOF chb musi tak zostac
-            char sign = this.text.charAt(this.iterator);
-
-            if(Character.isWhitespace(sign))    // pomijanie białych znaków miedzy tokenami
-            {
-                iterator++;
-                continue;
-            }
-
-            if (Character.isDigit(sign)) // zrobic pominiecie bialych znakow i spacji szzegolnie czyli troche zmodyfikowac
-            {
-                token_value += sign;
-                this.iterator++;
-
-                while( iterator < this.text.length()){
-                    sign = this.text.charAt(this.iterator);
-
-                    if (!Character.isDigit(sign))
-                        break;
-
-                    token_value += sign;
-                    this.iterator++;
-
-                }
-                var num_token = new Token(TokenCode.INT,  token_value);
-                magazine.add_token(num_token);
-                token_value = "";
-            }
-
-            // tu kolejne ify
-            // dla zmiennych bd trzeba wziac pod uwage ze moze byc np x33 i wtedy bierzemy caly token aż do znaku specjalnego
-
-
-
-            this.iterator++;
-        }
-
-        for(Token token: magazine.get_tokens())
+        while(index < text.length())
         {
-            System.out.println(token);
-            System.out.println();
+            char sign = text.charAt(index);
+            String tokenText =Character.toString(sign);
+            switch (sign){
+                case '(' : tokens.add(new Token(TokenCode.LPAREN,tokenText));index++;continue;
+                case ')': tokens.add(new Token(TokenCode.RPAREN,tokenText));index++;continue;
+                case '+': tokens.add(new Token(TokenCode.PLUS,tokenText)); index++;continue;
+                case '-': tokens.add(new Token(TokenCode.MINUS,tokenText)); index++;continue;
+                case '*': tokens.add(new Token(TokenCode.MUL,tokenText)); index++;continue;
+                case '/': tokens.add(new Token(TokenCode.DIV,tokenText)); index++;continue;
+            }
+            if(Character.isWhitespace(sign))
+            {
+                index++;
+            }
+            else if (Character.isDigit(sign))
+            {
+                handleNumber(text);
+            }
+            else {
+                throw new Exception("Sign is not valid in this language: " + sign);
+            }
         }
+    }
+    private void  handleNumber(String text){
+        StringBuilder tokenValue = new StringBuilder();
 
-
-
+        while(index < text.length() && Character.isDigit(text.charAt(index))){
+            tokenValue.append(text.charAt(index));
+            index++;
+        }
+        tokens.add(new Token(TokenCode.INT,tokenValue.toString()));
     }
 
+    public void listTokens(){
+        for(Token token : tokens){
+            System.out.println(token);
+        }
+    }
 }
