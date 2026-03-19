@@ -35,6 +35,11 @@ public class Scanner {
             {
                 handleNumber(text);
             }
+            else if (Character.isAlphabetic(sign))
+            {
+                handleVariable(text);
+            }
+
             else {
                 throw new Exception("Sign is not valid in this language: " + sign);
             }
@@ -48,6 +53,18 @@ public class Scanner {
             index++;
         }
         tokens.add(new Token(TokenCode.INT,tokenValue.toString()));
+    }
+
+    private void handleVariable(String text){
+        StringBuilder tokenValue = new StringBuilder();
+
+        while(index < text.length() && (Character.isDigit(text.charAt(index)) || Character.isAlphabetic(text.charAt(index))) )
+        {
+            tokenValue.append(text.charAt(index));
+            index++;
+        }
+        tokens.add(new Token(TokenCode.ID,tokenValue.toString()));
+
     }
 
     public void listTokens(){
