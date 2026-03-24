@@ -41,6 +41,7 @@ public class Scanner {
             }
 
             else {
+                tokens.add(new Token(TokenCode.EOF,tokenText));
                 throw new Exception("Sign is not valid in this language: " + sign);
             }
         }
@@ -71,5 +72,9 @@ public class Scanner {
         for(Token token : tokens){
             System.out.println(token);
         }
+    }
+
+    public ArrayList<Token> getTokens(){
+        return tokens;
     }
 }

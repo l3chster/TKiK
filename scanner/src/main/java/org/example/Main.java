@@ -1,6 +1,8 @@
 package org.example;
 
 
+import java.awt.*;
+
 public class Main {
     public static void main(String[] args) {
             if (args.length == 0) {
@@ -20,5 +22,9 @@ public class Main {
             catch (Exception e){
                 System.out.println(e);
             }
+
+            TokenColors colors = new TokenColors();
+            colors.colorful(scanner.getTokens());
+
         }
 }

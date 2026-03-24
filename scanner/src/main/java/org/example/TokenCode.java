@@ -13,5 +13,11 @@ public enum TokenCode{
     DIV,          // /
     LPAREN,       // (
     RPAREN,       // )
-    EOF
+    EOF,
+    //  colors
+    YELLOW,
+    GREEN,
+    BLUE,
+    RED,
+    WHITE
 }
