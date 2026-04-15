@@ -41,3 +41,7 @@ build/
 **/target/
 .idea/
 **/ .idea/
+
+target/
+out/
+*.class
