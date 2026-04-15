@@ -12,6 +12,5 @@
 
 ## Zadanie_2 (colorful_scanner)
 
-Zadania
 - Przygotuj tabelę tokenów własnego formatu.
 - Bazując na przygotowanym własnym formacie np. na uproszczonym języku programowania, napisz program kolorujący składnię. Zaimplementuj i wykorzystaj skaner rozpoznający tokeny wg przygotowanej tabeli tokenów. Program powinien wczytywać z pliku kod w wybranym formacie i zwrócić do innego pliku pokolorowany kod. Jako formatu wyjściowego można wykorzystać np. HTML. W pliku wyjściowym powinien być zachowany układ tekstu z pliku wejściowego.
